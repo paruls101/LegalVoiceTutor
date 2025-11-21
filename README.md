@@ -41,7 +41,9 @@ Type this in your terminal:
 streamlit run app.py
 ```
 if that does not work use
+```bash
 streamlit run app.py --server.headless true
+```
 This will skip the "enter your email" prompt that Streamlit shows on the very first run
 
 It'll open in your browser. It should indicate if it does not detect OpenAI or ElevenLabs keys. Click "Process Raw Notes" in the sidebar first to read your files (this will take a while if you upload a lot of notes), then just hit Start Quiz and start talking.
