@@ -1,6 +1,6 @@
 # Legal Voice Tutor
 
-I built this tool because my law exams are closed-book and rely heavily on deep recall of cases and facts. I found that just reading my notes over and over wasn't sticking—I needed to actually *speak* the arguments to remember them, kind of like a tutorial simulation.
+I built this tool because my law exams are closed-book and rely heavily on deep recall of cases and facts. I found that just reading my notes over and over wasn't sticking. I needed to actually *speak* the arguments to remember them. I made this for case ratios and facts predominantly.
 
 I made this up to help me revise. It basically takes messy notes (Word docs, etc.), parses them into a structured database of cases and principles, and then quizzes me on them. I tend to learn through audio and really benefit from people quizzing me so I thought I would try and build a tool for it. Mainly though this was built because I wanted to play around with the ElevenLabsAPI.
 
@@ -8,7 +8,7 @@ It's all voice-based. It asks me a question (using text-to-speech), I answer it 
 
 ## How to use it
 
-If you want to try this out with your own notes, here's exactly what you need to do.
+If you want to try this out with your own law notes, here's exactly what you need to do. (this probably win't work very well without case notes/for other subjects)
 
 ### 1. Get the code
 Clone this repo or download the folder.
@@ -40,7 +40,11 @@ Type this in your terminal:
 ```bash
 streamlit run app.py
 ```
-It'll open in your browser. Click "Process Raw Notes" in the sidebar first to read your files, then just hit Start Quiz and start talking.
+if that does not work use
+streamlit run app.py --server.headless true
+This will skip the "enter your email" prompt that Streamlit shows on the very first run
+
+It'll open in your browser. It should indicate if it does not detect OpenAI or ElevenLabs keys. Click "Process Raw Notes" in the sidebar first to read your files (this will take a while if you upload a lot of notes), then just hit Start Quiz and start talking.
 
 ## For Reviewers
 
