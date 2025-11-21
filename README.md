@@ -32,6 +32,7 @@ This uses OpenAI for the intelligence/transcription and ElevenLabs for the voice
   
 
 ### 4. Add your notes
+Make a file called "data" with sub-files labelled "processed" amd "raw" (leave "processed" empty) 
 Dump your `.docx` or `.md` files into the `data/raw/` folder. The parser is pretty smart—it just looks for headers and chunks of text, so you don't need to format them perfectly.
 
 ### 5. Run it
