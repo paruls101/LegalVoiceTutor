@@ -6,6 +6,8 @@ I made this up to help me revise for my upcoming tort law exam. It basically tak
 
 It's all voice-based. It asks me a question (using text-to-speech), I answer it out loud (transcribed via Whisper), and then it uses GPT-4 to grade my answer against my actual notes to tell me what I missed. 
 
+Update 21/11: fixed the bugs in the parser
+
 ## How to use it
 
 If you want to try this out with your own law notes, here's exactly what you need to do. (this probably win't work very well without case notes/for other subjects)
