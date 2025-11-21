@@ -26,11 +26,15 @@ PROCESSED_DATA_FILE = "data/processed/knowledge_base.json"
 
 def read_docx(file_path: str) -> str:
     """Reads text from a .docx file."""
-    doc = docx.Document(file_path)
-    full_text = []
-    for para in doc.paragraphs:
-        full_text.append(para.text)
-    return "\n".join(full_text)
+    try:
+        doc = docx.Document(file_path)
+        full_text = []
+        for para in doc.paragraphs:
+            full_text.append(para.text)
+        return "\n".join(full_text)
+    except Exception as e:
+        print(f"Error reading docx {file_path}: {e}")
+        return ""
 
 def read_file(file_path: str) -> str:
     """Reads text from a file based on extension."""
@@ -105,6 +109,9 @@ def extract_cases_from_chunk(chunk: str) -> List[Dict[str, Any]]:
         return data.get("items", [])
     except Exception as e:
         print(f"Error extracting from chunk: {e}")
+        # Re-raise error if it's an API error so we know to stop/alert
+        if "insufficient_quota" in str(e) or "rate_limit" in str(e) or "429" in str(e):
+             print("CRITICAL: OpenAI Quota Exceeded or Rate Limit Hit.")
         return []
 
 def parse_notes():
@@ -133,10 +140,21 @@ def parse_notes():
             
     # Remove duplicates (simple check by name)
     unique_items = {}
+    print(f"Total raw items found before deduplication: {len(all_items)}")
+    
     for item in all_items:
-        name = item.get("name", "").strip()
-        if name and name not in unique_items:
-            unique_items[name] = item
+        # Check if item is a dictionary
+        if not isinstance(item, dict):
+            continue
+            
+        name = item.get("Name", "") or item.get("name", "")
+        name = name.strip()
+        
+        if name:
+             # Use lower case for key to avoid case sensitivity duplicates
+             key = name.lower()
+             if key not in unique_items:
+                 unique_items[key] = item
             
     final_list = list(unique_items.values())
     
