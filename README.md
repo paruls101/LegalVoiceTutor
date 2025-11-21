@@ -46,8 +46,8 @@ This will skip the "enter your email" prompt that Streamlit shows on the very fi
 
 It'll open in your browser. It should indicate if it does not detect OpenAI or ElevenLabs keys. Click "Process Raw Notes" in the sidebar first to read your files (this will take a while if you upload a lot of notes), then just hit Start Quiz and start talking.
 
-N.B. Make sure you have credit on your OpenAI Account for API usage as it will return with 0 cases processed if you do not have any credit and look like the parser has failed. 
-Parsing will take A LOT of time I warn (but once you have done it once for the topic and have a file for processed notes you will not have to do it again.
+**N.B.** Make sure you have credit on your OpenAI Account for API usage as it will return with 0 cases processed if you do not have any credit and look like the parser has failed. 
+Parsing will take ***A LOT*** of time I warn (but once you have done it once for the topic and have a file for processed notes you will not have to do it again.
 
 ## For Reviewers
 
